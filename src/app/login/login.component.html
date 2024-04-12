@@ -1,0 +1,12 @@
+<p>login works!</p>
+
+<form #myForm="ngForm" (submit)="onSubmit()">
+<input type="text" required name="username" #un placeholder="username" [(ngModel)]="user.name"><br/>
+{{un.className}}
+<input type="email" name="email" placeholder="email id" [(ngModel)]="user.email"><br/>
+<input type="password" name="password" placeholder="password" [(ngModel)]="user.password"><br/>
+<button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+{{user|json}}
+{{myForm.control}}
+
+</form>

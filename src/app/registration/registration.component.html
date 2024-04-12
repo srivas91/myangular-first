@@ -1,0 +1,41 @@
+<p>registration works!</p>
+<form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <p>
+        <label for="firstname">First Name </label>
+        <input type="text" id="firstname"  formControlName="firstname">
+      </p>
+      <span class="danger" *ngIf="regForm.controls['firstname'].errors?.['required']">
+          firstname is required
+      </span>
+      <p>
+        <label for="lastname">Last Name </label>
+        <input type="text" id="lastname"  formControlName="lastname">
+      </p>
+      <span class="danger" *ngIf="regForm.controls['lastname'].errors?.['required']">
+        lastname is required
+    </span>
+      <p>
+
+        <label for="email">Email </label>
+        <input type="text" id="email"  formControlName="email">
+      </p>
+      <span class="danger" *ngIf="regForm.controls['email'].errors?.['required']">
+        email id is required
+    </span>
+    <div formArrayName="addresses">
+      <div *ngFor="let addressGroup of addressGroups.controls; let i = index">
+        <label>Street:</label>
+        <input formControlName="street">
+  
+        <label>City:</label>
+        <input formControlName="city">
+  
+        <button (click)="removeAddress(i)">Remove</button>
+      </div>
+    </div>
+  
+    <button (click)="addAddress()">Add Address</button>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+</form>
